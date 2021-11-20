@@ -16,8 +16,8 @@ function validarTarjeta() {
 
     // PASO 1: Almacenamiento en un arreglo de los dígitos en orden inverso
     let arrTC = Array.from(digitosTC);  // Almacena cada caracter de un string como un elemento en un arreglo
-    let arrInverso = arrTC.reverse();  // Invierte el orden de los elementos de un arreglo
-    
+    let arrInverso = arrTC.reverse();  // Invierte el orden de los elementos de un arreglo.
+
     // PASO 2: Multiplicar elementos en posiciones pares (contadas desde 1, no 0) por 2. 
     // Si el número resultante es de 2 dígitos, se deben sumar ambos dígitos.
     let digitoPar = -1;
@@ -25,9 +25,10 @@ function validarTarjeta() {
         digitoPar = parseInt(arrInverso[i]);  // Recordar que los elementos de arrInverso son de tipo string.
         digitoPar *= 2;
         if (digitoPar >= 10) {
-            digitoPar = parseInt(digitoPar.toString[1]) + parseInt(digitoPar.toString[0])
+            digitoPar = digitoPar.toString();  // Se convierte a string para poder seleccionar cada dígito y sumarlos.
+            digitoPar = parseInt(digitoPar[1]) + parseInt(digitoPar[0]);
         }
-        arrInverso[i] = digitoPar;
+        arrInverso[i] = digitoPar.toString();
     }
 
     // PASO 3: Sumar todos los dígitos de la tarjeta, considerando los valores obtenidos en el paso 2.
@@ -47,6 +48,7 @@ function validarTarjeta() {
         return true;
     } else {
         alerta.innerText = "Tarjeta Inválida";
+        alerta.className = "alerta-error";
         return false;
     }
 }
@@ -64,7 +66,7 @@ function enmascarar() {
             digitosTC = digitosTC.replace(digitosTC[i], "*");
         }
     }
-    document.getElementById("svgnumber").innerText = digitosTC;
+    document.getElementById("svgnumber").innerHTML = digitosTC;
 }
 
 document.getElementById("btn-validar").addEventListener("click", function() {
