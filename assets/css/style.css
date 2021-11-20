@@ -1,0 +1,16 @@
+#tarjeta {
+    background-color: rgb(214, 180, 93);
+}
+
+#contactless {
+    height: 40px;
+}
+
+#chip {
+    height: 40px;
+    vertical-align: top;
+}
+
+#numero {
+    text-align: center;
+}
