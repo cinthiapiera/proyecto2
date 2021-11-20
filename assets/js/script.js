@@ -45,7 +45,6 @@ function validarTarjeta() {
     if (suma % 10 == 0) {
         alerta.innerText = "Tarjeta Válida";
         alerta.className = "alerta-valida";
-        numero.value = "";
         return true;
     } else {
         alerta.innerText = "Tarjeta Inválida";
@@ -74,6 +73,7 @@ document.getElementById("btn-validar").addEventListener("click", function() {
     let valida = validarTarjeta();
     if (valida) {
         enmascarar();
+        document.getElementById("numero-tarjeta").value = "";
         this.hidden = true;  // Se esconde el botón
 
     }
